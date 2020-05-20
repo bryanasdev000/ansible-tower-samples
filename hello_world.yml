@@ -1,7 +1,20 @@
-- name: Hello World Sample
+- name: Hello World AWX Sample
   hosts: all
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
-
+    - name: Ping
+      ping:
+    - name: Get external IP
+      ipify_facts:
+      register: ip
+    - name: Get hostname
+      shell: hostname
+      register: hostname
+    - name: Get user
+      shell: whoami
+      register: user
+    - name: Print host, user and external IP
+      debug:
+        msg: "{{ user.stdout }} at {{ hostname.stdout }} ({{ ip.ansible_facts.ipify_public_ip }})"
