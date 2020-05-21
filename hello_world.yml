@@ -47,3 +47,6 @@
       debug: 
         msg: HTOP NOT found
       when: "'htop' not in ansible_facts.packages"
+    apt:
+        name: nginx
+        state: latest
