@@ -1,5 +1,6 @@
 - name: Hello World AWX Sample
   hosts: all
+  become: yes
   tasks:
     - name: Hello Message
       debug:
@@ -18,3 +19,7 @@
     - name: Print host, user and external IP
       debug:
         msg: "{{ user.stdout }} at {{ hostname.stdout }} ({{ ip.ansible_facts.ipify_public_ip }})"
+    - name: Install git
+      apt:
+        name: git
+        state: latest
