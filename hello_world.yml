@@ -19,6 +19,19 @@
     - name: Print host, user and external IP
       debug:
         msg: "{{ user.stdout }} at {{ hostname.stdout }} ({{ ip.ansible_facts.ipify_public_ip }})"
+    - name: Remove temp package if exists
+      file:
+        path: /tmp/htop.deb
+        state: absent
+      ignore_errors: yes
+    - name: Download deb from url
+      get_url:
+        url: "http://ftp.br.debian.org/debian/pool/main/h/htop/htop_2.2.0-1+b1_amd64.deb"
+        dest: /tmp/htop.deb
+    - name: Install downloaded deb
+      apt:
+        deb: /tmp/htop.deb
+        state: present
     - name: Install git
       apt:
         name: git
