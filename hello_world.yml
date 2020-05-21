@@ -36,3 +36,14 @@
       apt:
         name: git
         state: latest
+    - name: Check if HTOP is installed
+      package_facts:
+        manager: "auto"
+    - name: HTOP test result
+      debug: 
+        msg: HTOP found
+      when: "'htop' in ansible_facts.packages"
+    - name: HTOP test result
+      debug: 
+        msg: HTOP NOT found
+      when: "'htop' not in ansible_facts.packages"
