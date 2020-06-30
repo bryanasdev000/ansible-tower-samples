@@ -5,7 +5,7 @@
     - name: awx-manage get inventory 
       get_url:
         url: https://raw.githubusercontent.com/bryanasdev000/ansible-tower-samples/master/raw_ip_list
-        dest: /tmp/inventario
-        mode: '0777'
+        dest: "/tmp/{{ arquivo_inventario }} "
+        mode: "0777"
     - name: awx-manage import 
-      shell: awx-manage inventory_import --source=/tmp/inventario --inventory-name ZERO
+      shell: "awx-manage inventory_import --source=/tmp/{{ arquivo_inventario }} --inventory-name {{ nome_inventario }}"
