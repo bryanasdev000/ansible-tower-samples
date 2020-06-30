@@ -2,7 +2,7 @@
   hosts: localhost
   become: yes
   tasks:
-    - name: awx-manage import 
+    - name: awx-manage get inventory 
       get_url:
         url: https://raw.githubusercontent.com/bryanasdev000/ansible-tower-samples/master/raw_ip_list
         dest: /tmp/inventario
