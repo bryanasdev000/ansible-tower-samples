@@ -1,8 +1,8 @@
-- name: AWX Import inventory
+- name: AWX Import Inventory
   hosts: localhost
   become: yes
   tasks:
-    - name: awx-manage get inventory
+    - name: get inventory # This can be a copy from a volume to /tmp of the container
       get_url:
         url: https://raw.githubusercontent.com/bryanasdev000/ansible-tower-samples/master/raw_ip_list
         dest: "/tmp/{{ arquivo_inventario }}"
