@@ -8,4 +8,4 @@
         dest: "/tmp/{{ arquivo_inventario }} "
         mode: "0777"
     - name: awx-manage import 
-      shell: "awx-manage inventory_import --source=/tmp/{{ arquivo_inventario }} --inventory-name {{ nome_inventario }}"
+      shell: "awx-manage inventory_import --source=/tmp/{{ arquivo_inventario }} --inventory-name {{ nome_inventario }} --overwrite"
